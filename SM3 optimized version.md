@@ -17,3 +17,5 @@
 下图中上面的运行时间为优化前100000次hash的运行时间，下面的运行时间对应优化后100000次hash的运行时间:
 
 ![image](https://user-images.githubusercontent.com/104297950/181807495-0805b948-76c9-4a2e-9a9d-a3a1cfd611c1.png)
+
+可以看出优化效果明显
