@@ -1,12 +1,12 @@
 #include<iostream>
 #include<fstream>
 #include<string>
-#define filename "bad.mi"		//ĞèÒª¼ÓÃÜor½âÃÜµÄÎÄ¼şÃû£¬Óëpynq.cpp·ÅÔÚÍ¬Ò»¸öÄ¿Â¼ÏÂ
-#define wfilename "bad.mp4"		//¼ÓÃÜor½âÃÜºóµÄÎÄ¼şÃû£¬×Ô¶¯´´½¨
-#define SIZE 1600				//Ò»´Î¶ÁÈ¡µÄ×Ö½ÚÊı£¬16µÄÕûÊı±¶
+#define filename "bad.mi"		//éœ€è¦åŠ å¯†orè§£å¯†çš„æ–‡ä»¶åï¼Œä¸pynq.cppæ”¾åœ¨åŒä¸€ä¸ªç›®å½•ä¸‹
+#define wfilename "bad.mp4"		//åŠ å¯†orè§£å¯†åçš„æ–‡ä»¶åï¼Œè‡ªåŠ¨åˆ›å»º
+#define SIZE 1600				//ä¸€æ¬¡è¯»å–çš„å­—èŠ‚æ•°ï¼Œ16çš„æ•´æ•°å€
 #define ENCRYPT 0
 #define DECRYPT 1
-#define MODE ENCRYPT			//0Îª¼ÓÃÜÄ£Ê½£¬1Îª½âÃÜÄ£Ê½
+#define MODE ENCRYPT			//0ä¸ºåŠ å¯†æ¨¡å¼ï¼Œ1ä¸ºè§£å¯†æ¨¡å¼
 using namespace std;
 
 const int S[16][16] = { {0xd6, 0x90, 0xe9, 0xfe, 0xcc, 0xe1, 0x3d, 0xb7, 0x16, 0xb6, 0x14, 0xc2, 0x28, 0xfb, 0x2c, 0x05},
@@ -186,31 +186,31 @@ int gen_key(int* mkey, int* rkey) {
 int main() {
 	int KEY[4] = { 0x098ca07b,0x3254fe32,0x523de213,0x43526478 };
 	int key[32];
-	int input[SIZE / 4] = {};			//´æ´¢Ã¿¸ö×Ö½ÚASCIIÂëµÄÊı×é
-	int output[SIZE / 4] = {};			//ÔİÊ±´æ´¢¼ÓÃÜºóµÄÃÜÎÄ
-	char s[SIZE] = " ";							//´æ´¢¶Á³öµÄ×Ö½Ú
-	gen_key(KEY, key);							//Éú³ÉÂÖÃÜÔ¿
-	std::ifstream in(filename, ios::binary);	//³¢ÊÔ´ò¿ªÎÄ¼ş
-	std::ofstream out(wfilename, ios::binary);	//´´½¨ĞèÒªĞ´ÈëµÄÎÄ¼ş
-	//ÅĞ¶ÏÊÇ·ñ³É¹¦´ò¿ªÎÄ¼ş
+	int input[SIZE / 4] = {};			//å­˜å‚¨æ¯ä¸ªå­—èŠ‚ASCIIç çš„æ•°ç»„
+	int output[SIZE / 4] = {};			//æš‚æ—¶å­˜å‚¨åŠ å¯†åçš„å¯†æ–‡
+	char s[SIZE] = " ";							//å­˜å‚¨è¯»å‡ºçš„å­—èŠ‚
+	gen_key(KEY, key);							//ç”Ÿæˆè½®å¯†é’¥
+	std::ifstream in(filename, ios::binary);	//å°è¯•æ‰“å¼€æ–‡ä»¶
+	std::ofstream out(wfilename, ios::binary);	//åˆ›å»ºéœ€è¦å†™å…¥çš„æ–‡ä»¶
+	//åˆ¤æ–­æ˜¯å¦æˆåŠŸæ‰“å¼€æ–‡ä»¶
 	if (!in.is_open()) {
-		cout << "´ò¿ªÊ§°Ü";
+		cout << "æ‰“å¼€å¤±è´¥";
 		return 0;
 	}
 	if (!out.is_open()) {
-		cout << "´ò¿ªÊ§°Ü";
+		cout << "æ‰“å¼€å¤±è´¥";
 		return 0;
 	}
-	//¶ÁÈ¡SIZE×Ö½Ú
+	//è¯»å–SIZEå­—èŠ‚
 	while(in.peek() != EOF) {
 		for (int i = 0; i < SIZE; i++)
 			s[i] = 0;
 		in.read(s, SIZE);
-		//½«¶ÁÈ¡µÄÃ¿Ò»¸ö×Ö·û×ª»¯ÎªÁ½Î»µÄÊ®Áù½øÖÆÊı
+		//å°†è¯»å–çš„æ¯ä¸€ä¸ªå­—ç¬¦è½¬åŒ–ä¸ºä¸¤ä½çš„åå…­è¿›åˆ¶æ•°
 		for (int j = 0; j < SIZE / 4; j++)
 			input[j] = ((unsigned int)s[j * 4] & 0xff) << 24 | ((unsigned int)s[j * 4 + 1] & 0xff) << 16 | \
 			((unsigned int)s[j * 4 + 2] & 0xff) << 8 | ((unsigned int)s[j * 4 + 3] & 0xff);
-		//¼ÓÃÜor½âÃÜ£¬½«inputÖĞµÄÊı¾İ½øĞĞ¼ÓÃÜor½âÃÜ£¬¼ÓÃÜor½âÃÜ³öµÄÊı¾İ·ÅÈëoutput
+		//åŠ å¯†orè§£å¯†ï¼Œå°†inputä¸­çš„æ•°æ®è¿›è¡ŒåŠ å¯†orè§£å¯†ï¼ŒåŠ å¯†orè§£å¯†å‡ºçš„æ•°æ®æ”¾å…¥output
 		for (int j = 0; j < SIZE / 16; j++) {
 			if (MODE == ENCRYPT)
 				encrypt(key, input + j * 4, output + j * 4);
