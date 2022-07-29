@@ -6,7 +6,7 @@
 
 ![image](https://user-images.githubusercontent.com/104297950/181804366-e58c0001-ff50-4eb9-916a-b9ae8a9f8b92.png)
 
-如图，EXMESS1_MESS2就是我们根据H(MESS1)和MESS1长度伪造hash的对应的信息，我们可以验证：
+如图，EXMESS1_MESS2就是我们根据H(MESS1)和MESS1长度伪造hash的对应的信息，我们可以验证，上面的输出是我们进行伪造时得到的hash值，下面的输出是我们伪造的目标信息进行hash得到的结果
 
 ![image](https://user-images.githubusercontent.com/104297950/181804621-baa2ccb3-1bab-4ae0-8219-d720086b00a7.png)
 
