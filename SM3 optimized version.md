@@ -12,3 +12,8 @@
 
 ![image](https://user-images.githubusercontent.com/104297950/181803232-c0c14ffd-90df-49b6-babd-0ae22e545a33.png)
 
+运行方式:全局变量MESS为需要hash的信息，一个元素一个字节，int变量
+
+下图中上面的运行时间为优化前100000次hash的运行时间，下面的运行时间对应优化后100000次hash的运行时间:
+
+![image](https://user-images.githubusercontent.com/104297950/181807495-0805b948-76c9-4a2e-9a9d-a3a1cfd611c1.png)
