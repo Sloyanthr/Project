@@ -7,16 +7,14 @@ alphatable = "abcdefghijklmnopqrstuvwxyz"
 
 def randomstr(randomlength=8):
   random_str =''
-  base_str ='abcdefghigklmnopqrstuvwxyz'
-  length = len(base_str) -1
+  length = len(alphatable) -1
   for i in range(randomlength):
-    random_str += base_str[random.randint(0, length)]
+    random_str += alphatable[random.randint(0, length)]
   return random_str
 #查找并加入,num为攻击次数，length为字符串长度
 
 def attack(num,length = 6):
     hashmap={}
-    alphatable = "abcdefghijklmnopqrstuvwxyz"
     i = 0
     for s in itertools.permutations(alphatable,length):
         i+=1
