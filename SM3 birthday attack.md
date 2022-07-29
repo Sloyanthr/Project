@@ -4,4 +4,8 @@
 
 在本次实验中，我们选择对前32bit进行碰撞测试
 
+运行方式：
+
+attack函数的参数，num为攻击次数，length为碰撞长度
+
 ![image](https://user-images.githubusercontent.com/104297950/181802053-188a8567-d03f-4dc9-bdef-3bf84eb97c66.png)
