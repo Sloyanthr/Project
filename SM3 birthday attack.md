@@ -9,3 +9,5 @@
 attack函数的参数，num为攻击次数，n为碰撞长度，length为进行碰撞测试的字符串长度
 
 ![image](https://user-images.githubusercontent.com/104297950/181802053-188a8567-d03f-4dc9-bdef-3bf84eb97c66.png)
+
+如图所示就是找到的一对长度为8字节，hash值前28bit碰撞的字符串
